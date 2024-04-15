@@ -29,11 +29,16 @@ function optionChanged(index) {
     x: [data[index].otu_ids],
     y: [data[index].sample_values],
     text: [data[index].otu_labels],
-    "layout.xaxis.title": "OTU ID",
     "marker.size": [data[index].sample_values],
     "marker.color": [data[index].otu_ids],
   };
+  let layoutUpdate = {
+    xaxis: {
+      title: "OTU ID",
+    },
+  };
   Plotly.restyle("bubble", update2);
+  Plotly.relayout("bubble", layoutUpdate);
 }
 
 function populateDropDown() {
