@@ -18,8 +18,13 @@ function optionChanged(index) {
   //populating bar chart
   let data = dataset.samples;
   let update = {
-    x: [data[index].sample_values.slice(0, 10)],
-    y: [data[index].otu_ids.slice(0, 10).map((each) => "OTU " + each)],
+    x: [data[index].sample_values.slice(0, 10).reverse()],
+    y: [
+      data[index].otu_ids
+        .slice(0, 10)
+        .reverse()
+        .map((each) => "OTU " + each),
+    ],
     text: [data[index].otu_labels.slice(0, 10)],
   };
   Plotly.restyle("bar", update);
